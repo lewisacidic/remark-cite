@@ -1,0 +1,9 @@
+{
+  "name": "remark-cite",
+  "version": "0.0.1",
+  "description": "Citation support for remark.",
+  "main": "index.js",
+  "repository": "https://github.com/richlewis42/remark-cite.git",
+  "author": "Rich Lewis <richlewis42@users.noreply.github.com>",
+  "license": "MIT"
+}
