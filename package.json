@@ -2,7 +2,7 @@
   "name": "remark-cite",
   "version": "0.0.1",
   "description": "Citation support for remark.",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "https://github.com/richlewis42/remark-cite.git",
   "author": "Rich Lewis <richlewis42@users.noreply.github.com>",
   "license": "MIT",
@@ -22,9 +22,15 @@
     "eslint-plugin-prettier": "^3.0.1",
     "husky": "^1.3.1",
     "lint-staged": "^8.1.0",
-    "prettier": "^1.15.3"
+    "prettier": "^1.15.3",
+    "rollup": "^1.0.0",
+    "rollup-plugin-babel": "^4.2.0",
+    "rollup-plugin-commonjs": "^9.2.0",
+    "rollup-plugin-terser": "^3.0.0"
   },
   "scripts": {
+    "build": "rollup -c",
+    "dev": "yarn build -w",
     "lint": "eslint .",
     "format": "yarn lint --fix"
   },
