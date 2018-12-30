@@ -1,0 +1,35 @@
+[
+  {
+    "id": "knuth1968",
+    "type": "book",
+    "title": "The art of programming 1: Fundamental algorithms",
+    "author": [
+      {
+        "family": "Knuth",
+        "given": "Donald"
+      }
+    ],
+    "issued": {
+      "year": "1968"
+    }
+  },
+  {
+    "id": "obama2016",
+    "type": "article-journal",
+    "title": "United States health care reform: progress to date and next steps",
+    "author": [
+      {
+        "family": "Obama",
+        "given": "Barack"
+      }
+    ],
+    "container-title": "Jama",
+    "publisher": "American Medical Association",
+    "page": "525--532",
+    "volume": "316",
+    "number": "5",
+    "issued": {
+      "year": "2016"
+    }
+  }
+]
