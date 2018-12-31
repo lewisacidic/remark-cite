@@ -18,6 +18,7 @@
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "^10.0.1",
     "babel-jest": "^23.6.0",
+    "babel-preset-minify": "^0.5.0",
     "eslint": "^5.11.1",
     "eslint-config-prettier": "^3.3.0",
     "eslint-plugin-prettier": "^3.0.1",
@@ -30,14 +31,13 @@
     "rimraf": "^2.6.2",
     "rollup": "^1.0.0",
     "rollup-plugin-babel": "^4.2.0",
-    "rollup-plugin-commonjs": "^9.2.0",
-    "rollup-plugin-terser": "^3.0.0"
+    "rollup-plugin-commonjs": "^9.2.0"
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0"
   },
   "scripts": {
-    "build": "rollup -c",
+    "build": "BABEL_ENV=production rollup -c",
     "dev": "yarn build -w",
     "lint": "eslint .",
     "format": "yarn lint --fix",
