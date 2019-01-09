@@ -29,10 +29,5 @@ module.exports = {
       }
     ],
     '@babel/plugin-proposal-optional-chaining'
-  ],
-  env: {
-    production: {
-      presets: ['minify']
-    }
-  }
+  ]
 }
