@@ -1,32 +1,30 @@
-function locator(value, fromIndex) {
-  return value.indexOf('@', fromIndex)
-}
+function tokenizeNarrativeCitation(eat, value, silent) {
+  const [token, id, annotations] = /@(\w+) ?(?:\[(.+)\])?/.exec(value)
 
-function tokenizeCitation(eat, value, silent) {
-  const match = /@(\w+)/.exec(value)
-
-  if (match) {
+  if (id) {
     if (silent) {
       return true
     }
   }
+  const locator = annotations
 
-  return eat(match[0])({
-    type: 'link',
-    children: {
-      type: 'text',
-      url: '#' + match[1],
-      value: match[1]
+  return eat(token)({
+    type: 'citation',
+    citation: {
+      citationItems: [{ id, locator }],
+      properties: { 'in-narrative': true }
     }
   })
 }
 
-tokenizeCitation.locator = locator
+tokenizeNarrativeCitation.locator = function(value, fromIndex) {
+  return value.indexOf('@', fromIndex)
+}
 
 export default function() {
   const Parser = this.Parser
   const tokenizers = Parser.prototype.inlineTokenizers
   const methods = Parser.prototype.inlineMethods
-  tokenizers.citation = tokenizeCitation
-  methods.splice(methods.indexOf('link'), 0, 'citation')
+  tokenizers.narrativeCitation = tokenizeNarrativeCitation
+  methods.splice(methods.indexOf('link'), 0, 'narrativeCitation')
 }
