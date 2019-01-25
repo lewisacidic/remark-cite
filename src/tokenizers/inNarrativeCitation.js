@@ -1,4 +1,5 @@
 import { itemIdRegex, labelRegex, locatorRegex } from './regexes'
+import { stripUndef } from '../utils'
 
 const tokenize = (eat, value, silent) => {
   const regex = new RegExp(
@@ -15,10 +16,11 @@ const tokenize = (eat, value, silent) => {
 
   const [token, id, label, locator] = match
 
+  const item = stripUndef({ id, label, locator })
   return eat(token)({
-    type: 'citation',
+    type: 'Citation',
     citation: {
-      citationItems: [{ id, label, locator }],
+      citationItems: [item],
       properties: { 'in-narrative': true }
     }
   })
