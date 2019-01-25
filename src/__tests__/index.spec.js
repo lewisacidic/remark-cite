@@ -135,3 +135,60 @@ describe('parse', () => {
     })
   })
 })
+
+describe('transform', () => {
+  const run = x =>
+    remark()
+      .use(cite)
+      .runSync(x)
+
+  const makeCitation = () => ({
+    type: 'Citation',
+    citation: {
+      citationItems: [{ id: 'test' }],
+      properties: {
+        'in-narrative': false
+      }
+    }
+  })
+
+  const footnote = { type: 'Footnote' }
+
+  const footnoteReference = { type: 'FootnoteReference' }
+
+  it('adds a note index to a citation', () => {
+    expect(
+      run({
+        type: 'root',
+        children: [makeCitation()]
+      }).children[0].citation.properties.noteIndex
+    ).toEqual(0)
+  })
+
+  it('increments the note index if a citation is before', () => {
+    const result = run({
+      type: 'root',
+      children: [makeCitation(), makeCitation()]
+    })
+    expect(result.children[0].citation.properties.noteIndex).toEqual(0)
+    expect(result.children[1].citation.properties.noteIndex).toEqual(1)
+  })
+
+  it('increments the note index if a footnote is before', () => {
+    expect(
+      run({
+        type: 'root',
+        children: [footnote, makeCitation()]
+      }).children[1].citation.properties.noteIndex
+    ).toEqual(1)
+  })
+
+  it('increments the note index if a footnote reference is before', () => {
+    expect(
+      run({
+        type: 'root',
+        children: [footnoteReference, makeCitation()]
+      }).children[1].citation.properties.noteIndex
+    ).toEqual(1)
+  })
+})
