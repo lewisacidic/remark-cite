@@ -26,6 +26,7 @@
     "jest-html-reporter": "^2.4.2",
     "jest-junit": "^5.2.0",
     "lint-staged": "^8.1.0",
+    "locale-en-gb": "^0.0.2",
     "prettier": "^1.15.3",
     "remark": "^10.0.1",
     "remark-parse": "^6.0.3",
@@ -36,6 +37,8 @@
   },
   "dependencies": {
     "@babel/runtime": "^7.2.0",
+    "simple-cite": "^0.2.1",
+    "style-vancouver": "^0.0.2",
     "unist-util-is": "^2.1.2",
     "unist-util-visit": "^1.4.0"
   },
